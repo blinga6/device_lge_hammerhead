@@ -78,6 +78,25 @@ VSYNC_EVENT_PHASE_OFFSET_NS := 7500000
 SF_VSYNC_EVENT_PHASE_OFFSET_NS := 5000000
 TARGET_USES_ION := true
 
+# Cyanide Build Flags
+ TARGET_CYANIDE_ARM := 4.8
+ TARGET_CYANIDE_ROM := 4.9
+ TARGET_NDK_CYANIDE_ROM := 4.9
+ 
+ # Build block-based
+ CYANIDE_BUILD_BLOCK := false
+ 
+ # Optimizations
+ CLANG_O3 := false
+ STRICT_ALIASING := false
+ GRAPHITE_OPTS := false
+ USE_O3_OPTIMIZATIONS := false
+ OFAST_OPTS := false
+ ENABLE_GCCONLY := false
+ KRAIT_TUNINGS := false
+ FLOOP_NEST_OPTIMIZE := false
+ USE_PIPE := true
+
 # Enable dex-preoptimization to speed up first boot sequence
 ifeq ($(HOST_OS),linux)
   ifeq ($(TARGET_BUILD_VARIANT),user)
@@ -99,7 +118,7 @@ BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 # Define kernel config for inline building
-TARGET_KERNEL_CONFIG := cyanogenmod_hammerhead_defconfig
+TARGET_KERNEL_CONFIG := hammerhead_defconfig
 TARGET_KERNEL_SOURCE := kernel/lge/hammerhead
 
 ifneq ($(filter hammerhead_fp aosp_hammerhead_fp,$(TARGET_PRODUCT)),)
